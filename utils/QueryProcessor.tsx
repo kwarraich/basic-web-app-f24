@@ -14,20 +14,20 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("plus")) {
-    // Name: Khadija Warraich
     // Extract the numbers from the query using a regular expression
     const numbers = query.match(/\d+/g)?.map(Number) || [];
   
-    if (numbers.length !== 2) {
-      return "Query must contain exactly two numbers.";
+    if (numbers.length < 2) {
+      return "Query must contain at least two numbers.";
     }
   
-    // Perform the addition
-    const sum = numbers[0] + numbers[1];
+    // Perform the addition by reducing the array of numbers
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
   
-    // Return the sum as a string
+    // Return the sum directly
     return sum.toString();
-  }
+}
+
   
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
     // Extract the numbers from the query using a regular expression
