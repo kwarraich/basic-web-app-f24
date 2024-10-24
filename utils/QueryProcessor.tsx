@@ -13,21 +13,22 @@ export default function QueryProcessor(query: string): string {
     return ( "kwarraic-313" );
   }
 
-  if (query.toLowerCase().includes("which of the following numbers is the largest")) {
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("plus")) {
     // Name: Khadija Warraich
     // Extract the numbers from the query using a regular expression
-    const numbers = query.match(/\d+/g)?.map(Number) || []; // Handle null case with ?. and fallback to empty array
+    const numbers = query.match(/\d+/g)?.map(Number) || [];
   
-    if (numbers.length === 0) {
-      return "No numbers found.";
+    if (numbers.length !== 2) {
+      return "Query must contain exactly two numbers.";
     }
   
-    // Find the largest number
-    const largestNumber = Math.max(...numbers);
+    // Perform the addition
+    const sum = numbers[0] + numbers[1];
   
-    // Return the largest number as a string
-    return largestNumber.toString();
+    // Return the sum as a string
+    return sum.toString();
   }
+  
   
 
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
