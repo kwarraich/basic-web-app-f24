@@ -29,6 +29,21 @@ export default function QueryProcessor(query: string): string {
     return sum.toString();
   }
   
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
+    // Name: Khadija Warraich
+    // Extract the numbers from the query using a regular expression
+    const numbers = query.match(/\d+/g)?.map(Number) || [];
+  
+    if (numbers.length !== 2) {
+      return "Query must contain exactly two numbers.";
+    }
+  
+    // Perform the multiplication
+    const product = numbers[0] * numbers[1];
+  
+    // Return the product as a string
+    return product.toString();
+  }
   
 
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
