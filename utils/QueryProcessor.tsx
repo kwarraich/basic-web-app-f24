@@ -106,7 +106,7 @@ export default function QueryProcessor(query: string): string {
     const result = Math.pow(base, exponent);
   
     // Return the result as a string
-    return `${base} to the power of ${exponent} is ${result}.`;
+    return result.toString();
   }
 
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
