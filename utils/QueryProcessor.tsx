@@ -30,13 +30,12 @@ export default function QueryProcessor(query: string): string {
   }
   
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
-    // Name: Khadija Warraich
     // Extract the numbers from the query using a regular expression
     const numbers = query.match(/\d+/g)?.map(Number) || [];
   
     if (numbers.length !== 2) {
       return "Query must contain exactly two numbers.";
-    }
+    }h
   
     // Perform the multiplication
     const product = numbers[0] * numbers[1];
@@ -44,9 +43,40 @@ export default function QueryProcessor(query: string): string {
     // Return the product as a string
     return product.toString();
   }
+
+  if (query.toLowerCase().includes("which of the following numbers are primes")) {
+    // Extract numbers from the query
+    const numbers = query.match(/\d+/g)?.map(Number) || [];
+    
+    // Initialize an array to hold prime numbers
+    const primes = [];
+  
+    // Check each number if it's prime
+    for (const num of numbers) {
+      if (num > 1) { // 0 and 1 are not prime
+        let isPrime = true;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            isPrime = false; // Found a factor, not prime
+            break;
+          }
+        }
+        if (isPrime) {
+          primes.push(num); // Add to primes array if it's prime
+        }
+      }
+    }
+  
+    // Return the result as a string
+    if (primes.length === 0) {
+      return "No prime numbers found.";
+    } else {
+      return `The prime numbers are: ${primes.join(", ")}.`;
+    }
+  }
+  
   
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("minus")) {
-    // Name: Khadija Warraich
     // Extract the numbers from the query using a regular expression
     const numbers = query.match(/\d+/g)?.map(Number) || [];
   
@@ -54,7 +84,7 @@ export default function QueryProcessor(query: string): string {
       return "Query must contain exactly two numbers.";
     }
   
-    // Perform the multiplication
+    // Perform the minus
     const product = numbers[0] - numbers[1];
   
     // Return the product as a string
