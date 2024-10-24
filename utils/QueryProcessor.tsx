@@ -58,7 +58,7 @@ if (query.toLowerCase().includes("what is")) {
   
     if (numbers.length !== 2) {
       return "Query must contain exactly two numbers.";
-    }h
+    }
   
     // Perform the multiplication
     const product = numbers[0] * numbers[1];
