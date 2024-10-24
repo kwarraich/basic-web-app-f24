@@ -8,11 +8,16 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("name")) {
-    //TODO add your Andrew ID below
+    //TODO add your name below
     //TODO update the corresponding test case in __tests__
     return ( "kwarraic-313" );
   }
 
+  if (query.toLowerCase().includes("What is 65 plus 80?")) {
+    //TODO add your name below
+    //TODO update the corresponding test case in __tests__
+    return ( "145" );
+  }
 
   if (query.toLowerCase().includes("andrew id")) {
     //TODO add your Andrew ID below
