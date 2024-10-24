@@ -13,22 +13,25 @@ export default function QueryProcessor(query: string): string {
     return ( "kwarraic-313" );
   }
 
-  if (query.toLowerCase().includes("What is 65 plus 80?")) {
-    //TODO add your name below
-    //TODO update the corresponding test case in __tests__
-    return ( "145" );
+  if (query.toLowerCase().includes("which of the following numbers is the largest")) {
+    // Name: Khadija Warraich
+    // Extract the numbers from the query using a regular expression
+    const numbers = query.match(/\d+/g)?.map(Number) || []; // Handle null case with ?. and fallback to empty array
+  
+    if (numbers.length === 0) {
+      return "No numbers found.";
+    }
+  
+    // Find the largest number
+    const largestNumber = Math.max(...numbers);
+  
+    // Return the largest number as a string
+    return largestNumber.toString();
   }
+  
+  
 
-  if (query.toLowerCase().includes("Which of the following numbers is the largest: 97, 52, 21?")) {
-    //TODO add your name below
-    //TODO update the corresponding test case in __tests__
-    return ( "97" );
-  }
-
-  if (query.toLowerCase().includes("What is 7 plus 41?")) {
-    //TODO add your name below
-    //TODO update the corresponding test case in __tests__
-    return ( "48" );
+  
   }
 
   if (query.toLowerCase().includes("andrew id")) {
