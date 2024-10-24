@@ -28,6 +28,29 @@ export default function QueryProcessor(query: string): string {
     return sum.toString();
 }
 
+
+if (query.toLowerCase().includes("what is")) {
+  // Extract the numbers and operators from the query
+  const expression = query.match(/(\d+|\bplus\b|\bmultiplied by\b)/g);
+
+  if (!expression || expression.length < 3) {
+      return "Query must contain a valid expression.";
+  }
+
+  // Replace words with symbols for easier evaluation
+  const evalExpression = expression.map(token => {
+      if (token === "plus") return "+";
+      if (token === "multiplied by") return "*";
+      return token;
+  }).join(" ");
+
+  // Evaluate the expression
+  const result = eval(evalExpression);
+
+  // Return the result as a string
+  return result.toString();
+}
+
   
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
     // Extract the numbers from the query using a regular expression
