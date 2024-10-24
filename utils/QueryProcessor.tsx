@@ -91,6 +91,24 @@ export default function QueryProcessor(query: string): string {
     return product.toString();
   }
 
+
+  if (query.toLowerCase().includes("to the power of")) {
+    // Extract numbers from the query
+    const numbers = query.match(/(\d+)/g)?.map(Number) || [];
+    
+    if (numbers.length !== 2) {
+      return "Query must contain exactly two numbers: a base and an exponent.";
+    }
+    
+    // Perform the exponentiation
+    const base = numbers[0];
+    const exponent = numbers[1];
+    const result = Math.pow(base, exponent);
+  
+    // Return the result as a string
+    return `${base} to the power of ${exponent} is ${result}.`;
+  }
+
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
     // Name: Khadija Warraich
     // Extract the numbers from the query using a regular expression
