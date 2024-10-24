@@ -29,10 +29,25 @@ export default function QueryProcessor(query: string): string {
     return largestNumber.toString();
   }
   
+
+  if (query.toLowerCase().includes("which of the following numbers is the largest")) {
+    // Name: Khadija Warraich
+    // Extract the numbers from the query using a regular expression
+    const numbers = query.match(/\d+/g)?.map(Number) || []; // Handle null case with ?. and fallback to empty array
+  
+    if (numbers.length === 0) {
+      return "No numbers found.";
+    }
+  
+    // Find the largest number
+    const largestNumber = Math.max(...numbers);
+  
+    // Return the largest number as a string
+    return largestNumber.toString();
+  }
   
 
   
-  }
 
   if (query.toLowerCase().includes("andrew id")) {
     //TODO add your Andrew ID below
