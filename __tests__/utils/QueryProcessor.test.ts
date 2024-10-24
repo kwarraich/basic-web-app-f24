@@ -18,6 +18,15 @@ describe("QueryProcessor", () => {
           ));
     });
 
+    test('what is your name', () => {
+        const query = "what is your name";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "kwarraic" 
+          ));
+    });
+
+
     // TODO: You should update the test below after you add your andrew id
     test('should return my andrew id', () => {
         const query = "what's your Andrew ID?";
